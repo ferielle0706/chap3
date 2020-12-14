@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2b14fe11-6de5-46ea-8bdf-b0ec73904591" activeEnvironment="Default" name="ws1" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="8baf7389-2425-4bc7-b9b2-f8ca59d6fcb6" wsaVersion="NONE" name="TypeComplexBinding" type="wsdl" bindingName="{http://www.TypeComplex.net/wsdl}TypeComplexBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost/mywebservices/ws1.php?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost/mywebservices/ws1.php?wsdl"><con:part><con:url>http://localhost/mywebservices/ws1.php?wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://www.TypeComplex.net/wsdl" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.TypeComplex.net/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema targetNamespace="http://www.TypeComplex.net/wsdl">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+      <xsd:complexType name="Reservation">
+        <xsd:all>
+          <xsd:element name="Custumer" type="xsd:string"/>
+          <xsd:element name="ReservationTitle" type="xsd:string"/>
+          <xsd:element name="ReservationDate" type="xsd:date"/>
+          <xsd:element name="ReservationDescription" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="ReservationRequest">
+    <part name="Custumer" type="xsd:string"/>
+  </message>
+  <message name="ReservationResponse">
+    <part name="return" type="tns:Reservation"/>
+  </message>
+  <message name="MontantTndRequest">
+    <part name="nbJour" type="xsd:int"/>
+  </message>
+  <message name="MontantTndResponse">
+    <part name="MontantTotal" type="xsd:float"/>
+  </message>
+  <portType name="TypeComplexPortType">
+    <operation name="Reservation">
+      <documentation>Get Specific Reservation</documentation>
+      <input message="tns:ReservationRequest"/>
+      <output message="tns:ReservationResponse"/>
+    </operation>
+    <operation name="MontantTnd">
+      <documentation>Get Specific MontantTnd</documentation>
+      <input message="tns:MontantTndRequest"/>
+      <output message="tns:MontantTndResponse"/>
+    </operation>
+  </portType>
+  <binding name="TypeComplexBinding" type="tns:TypeComplexPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Reservation">
+      <soap:operation soapAction="http://www.TypeComplex.net/wsdl#Reservation" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="http://www.TypeComplex.net/wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.TypeComplex.net/wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="MontantTnd">
+      <soap:operation soapAction="http://www.TypeComplex.net/wsdl#MontantTnd" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="http://www.TypeComplex.net/wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.TypeComplex.net/wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="TypeComplex">
+    <port name="TypeComplexPort" binding="tns:TypeComplexBinding">
+      <soap:address location="http://localhost/mywebservices/ws1.php"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost/mywebservices/ws1.php</con:endpoint></con:endpoints><con:operation id="6e42f258-167a-40e3-aab0-1f81ddc1741b" isOneWay="false" action="http://www.TypeComplex.net/wsdl#MontantTnd" name="MontantTnd" bindingOperationName="MontantTnd" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b1c85d73-1810-4479-ae69-9de66c0367c6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost/mywebservices/ws1.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://www.TypeComplex.net/wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <wsdl:MontantTnd soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">\r
+         <nbJour xsi:type="xsd:int">?</nbJour>\r
+      </wsdl:MontantTnd>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.TypeComplex.net/wsdl#MontantTnd"/></con:call></con:operation><con:operation id="e8010bc1-449e-4141-8ee7-82c876402bbc" isOneWay="false" action="http://www.TypeComplex.net/wsdl#Reservation" name="Reservation" bindingOperationName="Reservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c4f2f072-3337-4528-b10d-8f2fb304ffb6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost/mywebservices/ws1.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://www.TypeComplex.net/wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <wsdl:Reservation soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">\r
+         <Custumer xsi:type="xsd:string">?</Custumer>\r
+      </wsdl:Reservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.TypeComplex.net/wsdl#Reservation"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
